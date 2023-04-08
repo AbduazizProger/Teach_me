@@ -10,13 +10,20 @@ class ProfilePage extends StatelessWidget {
       children: [
         Center(
           child: Column(
-            children: const [
-              Icon(
-                CupertinoIcons.profile_circled,
-                color: Colors.grey,
-                size: 170,
+            children: [
+              const SizedBox(height: 20),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                width: 200,
+                child: const Image(
+                  image: NetworkImage(
+                    "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+                  ),
+                ),
               ),
-              Text(
+              const Text(
                 'Profile name',
                 style: TextStyle(
                   color: Colors.white,

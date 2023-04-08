@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teach_me/main/pages/chat.dart';
 import 'package:teach_me/main/pages/home.dart';
@@ -50,15 +51,15 @@ class _MainPageState extends State<MainPage> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home, size: 30),
+                icon: Icon(CupertinoIcons.home, size: 30),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.chat, size: 30),
+                icon: Icon(CupertinoIcons.chat_bubble, size: 30),
                 label: 'Chat',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person, size: 30),
+                icon: Icon(CupertinoIcons.person, size: 30),
                 label: 'Profile',
               ),
             ],

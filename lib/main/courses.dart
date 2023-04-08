@@ -21,8 +21,8 @@ class Courses extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
       options: CarouselOptions(
-        height: 150,
-        viewportFraction: 0.4,
+        height: 200,
+        viewportFraction: 0.5,
         enlargeCenterPage: true,
         autoPlay: true,
       ),
@@ -48,7 +48,10 @@ class Courses extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Image.network(urlImage, fit: BoxFit.cover),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.network(urlImage, fit: BoxFit.cover),
+        ),
       ),
     );
   }
