@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teach_me/course/components/course_overview.dart';
-import 'package:teach_me/course/story_telling_page.dart';
 import 'package:teach_me/models/course.dart';
-import 'package:teach_me/own/slight_left.dart';
 
 class CoursePage extends StatelessWidget {
   const CoursePage({super.key, required this.id, required this.courses});
