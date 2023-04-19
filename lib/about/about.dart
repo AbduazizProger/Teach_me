@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teach_me/register/texts.dart';
+import 'package:teach_me/register/components/texts.dart';
 
 class About extends StatelessWidget {
   const About({super.key});

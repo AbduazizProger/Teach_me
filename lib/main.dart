@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:teach_me/about/about.dart';
 import 'package:teach_me/about/about_page.dart';
 import 'package:teach_me/main/main_page.dart';
 import 'package:teach_me/register/register_page.dart';

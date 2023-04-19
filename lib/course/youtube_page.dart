@@ -19,7 +19,6 @@ class _YoutubePageState extends State<YoutubePage> {
     for (int i = 0; i < videos[widget.id].urls.length; i++) {
       videos[widget.id].urls[i] =
           YoutubePlayer.convertUrlToId(videos[widget.id].urls[i])!;
-
       controllers.add(
         YoutubePlayerController(
           initialVideoId: videos[widget.id].urls[i],

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:teach_me/course/components/video_widget.dart';
 import 'package:teach_me/course/test_page.dart';
 import 'package:teach_me/course/youtube_page.dart';
 import 'package:teach_me/models/video.dart';
@@ -97,49 +98,7 @@ class _VideoPageState extends State<VideoPage> {
             body: ListView.builder(
               itemCount: videos[widget.id].urls.length,
               itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => YoutubePage(
-                                index: index,
-                                id: widget.id,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: 350,
-                          height: 220,
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(30),
-                            color: Colors.white,
-                          ),
-                          child: Image.network(
-                            YoutubePlayer.getThumbnail(
-                              videoId: YoutubePlayer.convertUrlToId(
-                                  videos[0].urls[index])!,
-                            ),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 10),
-                      const Text(
-                        'Video name',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
-                );
+                return VideoWidget(widget: widget, index: index);
               },
             ),
           ),

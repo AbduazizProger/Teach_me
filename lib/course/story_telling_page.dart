@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:teach_me/course/components/skip_button.dart';
+import 'package:teach_me/course/components/story_widget.dart';
 import 'package:teach_me/course/video_page.dart';
 import 'package:teach_me/own/slight_left.dart';
 
@@ -32,58 +34,11 @@ class _StoryTellingPageState extends State<StoryTellingPage> {
       body: Column(
         children: [
           Stack(
-            children: [
+            children: const [
               ClipRect(
-                child: SizedBox(
-                  height: 368,
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Image.asset('assets/images/softman.png'),
-                  ),
-                ),
+                child: StoryWidget(),
               ),
-              SizedBox(
-                height: 368,
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const Align(
-                      alignment: Alignment.bottomCenter,
-                      child: Text(
-                        'Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 23,
-                        ),
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Transform.rotate(
-                        angle: 3.14 / 2,
-                        child: GestureDetector(
-                          onTap: () {
-                            Navigator.of(context).pop();
-                            Navigator.of(context).push(
-                              SlideLeftRoute(
-                                builder: (_) => const VideoPage(id: 0),
-                                settings: const RouteSettings(),
-                              ),
-                            );
-                          },
-                          child: const Icon(
-                            CupertinoIcons.triangle,
-                            color: Colors.blue,
-                            size: 50,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              SkipButton(),
             ],
           ),
         ],

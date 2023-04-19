@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:teach_me/register/form.dart';
-import 'package:teach_me/register/texts.dart';
+import 'package:teach_me/register/components/form.dart';
+import 'package:teach_me/register/components/texts.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
