@@ -57,7 +57,10 @@ class CourseOverview extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   SlideLeftRoute(
-                    builder: (_) => const StoryTellingPage(id: 0),
+                    builder: (_) => StoryTellingPage(
+                      id: 0,
+                      courseName: courses[id].name,
+                    ),
                     settings: const RouteSettings(),
                   ),
                 );

@@ -6,7 +6,11 @@ import 'package:teach_me/own/slight_left.dart';
 class SkipButton extends StatelessWidget {
   const SkipButton({
     super.key,
+    required this.courseName,
+    required this.index,
   });
+  final String courseName;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -14,19 +18,8 @@ class SkipButton extends StatelessWidget {
       height: 368,
       width: double.infinity,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          const Align(
-            alignment: Alignment.bottomCenter,
-            child: Text(
-              'Bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla',
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 23,
-              ),
-            ),
-          ),
           Align(
             alignment: Alignment.bottomRight,
             child: Transform.rotate(
@@ -36,7 +29,8 @@ class SkipButton extends StatelessWidget {
                   Navigator.of(context).pop();
                   Navigator.of(context).push(
                     SlideLeftRoute(
-                      builder: (_) => const VideoPage(id: 0),
+                      builder: (_) =>
+                          VideoPage(index: index + 1, courseName: courseName),
                       settings: const RouteSettings(),
                     ),
                   );

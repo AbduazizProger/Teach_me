@@ -1,14 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:teach_me/course/components/skip_button.dart';
 import 'package:teach_me/course/components/story_widget.dart';
-import 'package:teach_me/course/video_page.dart';
-import 'package:teach_me/own/slight_left.dart';
 
 class StoryTellingPage extends StatefulWidget {
-  const StoryTellingPage({super.key, required this.id});
+  const StoryTellingPage(
+      {super.key, required this.id, required this.courseName});
   final int id;
+  final String courseName;
 
   @override
   State<StoryTellingPage> createState() => _StoryTellingPageState();
@@ -34,11 +33,9 @@ class _StoryTellingPageState extends State<StoryTellingPage> {
       body: Column(
         children: [
           Stack(
-            children: const [
-              ClipRect(
-                child: StoryWidget(),
-              ),
-              SkipButton(),
+            children: [
+              StoryWidget(courseName: widget.courseName, index: widget.id),
+              SkipButton(courseName: widget.courseName, index: widget.id),
             ],
           ),
         ],

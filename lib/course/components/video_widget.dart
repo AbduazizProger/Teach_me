@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teach_me/course/video_page.dart';
 import 'package:teach_me/course/youtube_page.dart';
+import 'package:teach_me/models/video.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VideoWidget extends StatelessWidget {
@@ -8,10 +9,12 @@ class VideoWidget extends StatelessWidget {
     super.key,
     required this.widget,
     required this.index,
+    required this.video,
   });
 
   final VideoPage widget;
   final int index;
+  final Video video;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,8 @@ class VideoWidget extends StatelessWidget {
                 MaterialPageRoute(
                   builder: (context) => YoutubePage(
                     index: index,
-                    id: widget.id,
+                    id: widget.index,
+                    video: video,
                   ),
                 ),
               );
@@ -41,15 +45,16 @@ class VideoWidget extends StatelessWidget {
               ),
               child: Image.network(
                 YoutubePlayer.getThumbnail(
-                  videoId: YoutubePlayer.convertUrlToId(videos[0].urls[index])!,
+                  videoId: YoutubePlayer.convertUrlToId(video.urls[index])!,
                 ),
               ),
             ),
           ),
           const SizedBox(height: 10),
-          const Text(
-            'Video name',
-            style: TextStyle(
+          Text(
+            video.names[index],
+            textAlign: TextAlign.center,
+            style: const TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
