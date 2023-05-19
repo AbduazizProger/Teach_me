@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:teach_me/main/main_page.dart';
 import 'package:teach_me/own/slight_left.dart';
 
@@ -7,15 +8,18 @@ class Forms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController username = TextEditingController();
+    final TextEditingController password = TextEditingController();
     return Column(
       children: [
-        const SizedBox(
+        SizedBox(
           width: 330,
           height: 70,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: InputDecoration(
+              controller: username,
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.person, size: 50),
                 fillColor: Colors.white,
                 filled: true,
@@ -28,14 +32,15 @@ class Forms extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(
+        SizedBox(
           width: 330,
           height: 70,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: TextField(
+              controller: password,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 suffixIcon: Icon(Icons.lock, size: 50),
                 fillColor: Colors.white,
                 filled: true,
@@ -53,13 +58,18 @@ class Forms extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(
-                  SlideLeftRoute(
-                    builder: (_) => const MainPage(),
-                    settings: const RouteSettings(),
-                  ),
-                );
+              onPressed: () async {
+                if (username.text != '' && password.text != '') {
+                  var prefs = await SharedPreferences.getInstance();
+                  prefs.setString('username', username.text);
+                  prefs.setString('password', password.text);
+                  Navigator.of(context).pushReplacement(
+                    SlideLeftRoute(
+                      builder: (_) => const MainPage(),
+                      settings: const RouteSettings(),
+                    ),
+                  );
+                }
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.black,

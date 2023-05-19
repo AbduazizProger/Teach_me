@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:teach_me/course/story_telling_page.dart';
+import 'package:teach_me/course/all_stories_page.dart';
 import 'package:teach_me/models/course.dart';
 import 'package:teach_me/own/slight_left.dart';
 
@@ -57,10 +57,7 @@ class CourseOverview extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(
                   SlideLeftRoute(
-                    builder: (_) => StoryTellingPage(
-                      id: 0,
-                      courseName: courses[id].name,
-                    ),
+                    builder: (_) => AllStoriesPage(name: courses[id].name),
                     settings: const RouteSettings(),
                   ),
                 );

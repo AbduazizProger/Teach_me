@@ -3,17 +3,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teach_me/course/components/video_widget.dart';
 import 'package:teach_me/course/test_page.dart';
+import 'package:teach_me/main/pages/home.dart';
 import 'package:teach_me/models/video.dart';
 import 'package:teach_me/own/slight_left.dart';
 import 'package:http/http.dart' as http;
 
-Future<List<Video>> fetchCourses(String courseName, int index) async {
+Future<List<Video>> fetchVideos(String courseName, int index) async {
   final response = await http.get(
     Uri.parse(
-      'http://192.168.0.101:8000/$courseName/lessons/$courseName$index/',
+      'http://$initialUrl/$courseName/lessons/$courseName$index/',
     ),
   );
-  print('http://192.168.0.101:8000/$courseName/lessons/$courseName$index/');
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
     List<Video> videos = [];
@@ -53,14 +53,14 @@ class _VideoPageState extends State<VideoPage> {
             height: double.infinity,
           ),
           FutureBuilder(
-            future: fetchCourses(widget.courseName, widget.index),
+            future: fetchVideos(widget.courseName, widget.index),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 List<Video> videos = snapshot.data!;
                 return Scaffold(
                   appBar: AppBar(
                     title: Text(
-                      videos[0].title,
+                      widget.courseName,
                       style: const TextStyle(
                         color: Colors.amber,
                         fontSize: 30,
@@ -92,7 +92,11 @@ class _VideoPageState extends State<VideoPage> {
                           Navigator.of(context).pop();
                           Navigator.of(context).push(
                             SlideLeftRoute(
-                              builder: (_) => const TestPage(id: 0),
+                              builder: (_) => TestPage(
+                                id: 0,
+                                courseName: widget.courseName,
+                                index: widget.index,
+                              ),
                               settings: const RouteSettings(),
                             ),
                           );

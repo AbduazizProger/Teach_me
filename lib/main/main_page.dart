@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teach_me/main/pages/chat.dart';
 import 'package:teach_me/main/pages/home.dart';
 import 'package:teach_me/main/pages/profile.dart';
 
@@ -15,11 +14,9 @@ class _MainPageState extends State<MainPage> {
   int currentPage = 0;
   Widget? whichPage(int index) {
     if (index == 0) {
-      return HomePage();
-    } else if (index == 1) {
-      return ChatPage();
-    } else if (index == 2) {
-      return ProfilePage();
+      return const HomePage();
+    } else {
+      return const ProfilePage();
     }
   }
 
@@ -51,15 +48,11 @@ class _MainPageState extends State<MainPage> {
             },
             items: const [
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.home, size: 30),
+                icon: Icon(CupertinoIcons.home, size: 25),
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.chat_bubble, size: 30),
-                label: 'Chat',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.person, size: 30),
+                icon: Icon(CupertinoIcons.person, size: 25),
                 label: 'Profile',
               ),
             ],

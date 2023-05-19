@@ -7,7 +7,7 @@ import 'package:teach_me/about/what_get.dart';
 class AboutPage extends StatelessWidget {
   AboutPage({super.key});
 
-  final List<Widget> abouts = const [
+  static const List<Widget> abouts = [
     About(),
     Purpose(),
     WhatGet(),

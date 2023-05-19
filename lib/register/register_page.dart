@@ -34,8 +34,8 @@ class _RegisterPageState extends State<RegisterPage> {
             centerTitle: true,
           ),
           backgroundColor: Colors.transparent,
-          body: ListView(
-            children: const [
+          body: const Column(
+            children: [
               SizedBox(height: 30),
               Texts(),
               SizedBox(height: 50),

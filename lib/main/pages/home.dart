@@ -6,8 +6,10 @@ import 'package:teach_me/main/components/enrolled_courses.dart';
 import 'package:teach_me/models/course.dart';
 import 'package:http/http.dart' as http;
 
+const String initialUrl = 'teachme-production.up.railway.app';
+
 Future<List<Course>> fetchCourses() async {
-  final response = await http.get(Uri.parse('http://192.168.0.101:8000'));
+  final response = await http.get(Uri.parse('http://$initialUrl'));
   if (response.statusCode == 200) {
     final data = jsonDecode(response.body);
     List<Course> courses = [];

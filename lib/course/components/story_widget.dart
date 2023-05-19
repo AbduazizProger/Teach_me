@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:teach_me/course/video_page.dart';
+import 'package:teach_me/main/pages/home.dart';
 import 'package:teach_me/own/slight_left.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:http/http.dart' as http;
@@ -9,9 +10,10 @@ String fromJson(Map<String, dynamic> json) {
   return json['story_post_video'];
 }
 
-Future<String> fetchStory(String coursName, int index) async {
-  final response = await http.get(Uri.parse(
-      'http://192.168.0.101:8000/$coursName/story/$coursName$index/'));
+Future<String> fetchStory(String courseName, int index) async {
+  final response = await http.get(
+      Uri.parse('http://$initialUrl/$courseName/story/$courseName$index/'));
+  print('http://$initialUrl/$courseName/story/$courseName$index/');
   if (response.statusCode == 200) {
     final data = fromJson(jsonDecode(response.body)[0] as Map<String, dynamic>);
     return data;
