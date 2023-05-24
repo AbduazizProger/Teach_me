@@ -48,13 +48,18 @@ class EnrolledCourses extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(
-                  'Lorem ipsum lorem ipsum\nlorem ipsum lorem ipsum\nlorem ipsum lorem \nipsum lorem \nipsum lorem ipsum',
-                  maxLines: 5,
-                  softWrap: true,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.white,
+                SizedBox(
+                  width: 200,
+                  height: 152,
+                  child: ClipRect(
+                    child: Text(
+                      courses[index - 2].about,
+                      overflow: TextOverflow.clip,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
                 TextButton(

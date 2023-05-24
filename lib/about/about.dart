@@ -22,9 +22,9 @@ class About extends StatelessWidget {
                 child: const Texts(),
               ),
               const SizedBox(height: 10),
-              Row(
+              const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   Icon(Icons.circle, size: 7, color: Colors.amber),
                   SizedBox(width: 10),
                   Icon(Icons.circle, size: 7, color: Colors.white),

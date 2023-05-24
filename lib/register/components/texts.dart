@@ -7,11 +7,11 @@ class Texts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       children: [
         Center(
           child: Stack(
-            children: const [
+            children: [
               Text(
                 'About project',
                 style: TextStyle(
@@ -36,8 +36,8 @@ class Texts extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 20),
-        const Padding(
+        SizedBox(height: 20),
+        Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
             'Lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum',
